@@ -1,0 +1,15 @@
+road-safety-analysis/
+├── data/
+│   ├── raw_data.csv
+│   └── preprocessed_data.arff
+├── scripts/
+│   ├── data_preprocessing.py
+│   └── weka_analysis.py
+├── results/
+│   ├── decision_tree.png
+│   └── performance_metrics.txt
+├── screenshots/
+│   ├── tree_visualization.png
+│   └── evaluation.png
+├── README.md
+└── report.pdf
