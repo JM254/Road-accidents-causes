@@ -1,0 +1,28 @@
+import weka.core.jvm as jvm
+from weka.core.converters import Loader
+from weka.classifiers import Classifier, Evaluation
+from weka.core.classes import Random
+
+# Start JVM
+jvm.start()
+
+# Load data
+loader = Loader(classname="weka.core.converters.ArffLoader")
+data = loader.load_file("data/preprocessed_data.arff")
+data.class_is_last()
+
+# Build classifier
+classifier = Classifier(classname="weka.classifiers.trees.J48")
+classifier.build_classifier(data)
+
+# Evaluate classifier
+evaluation = Evaluation(data)
+evaluation.crossvalidate_model(classifier, data, 10, Random(1))
+
+# Print results
+print(evaluation.summary())
+print(evaluation.class_details())
+print(evaluation.matrix())
+
+# Stop JVM
+jvm.stop()
